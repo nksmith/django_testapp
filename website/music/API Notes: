@@ -1,0 +1,27 @@
+API Notes:
+
+python manage.py shell
+
+from music.models import Album, Song
+
+# return the taylor swift album
+album1 = Album.objects.get(id=1)
+
+# add a song to the album
+song = Song()
+song.album = album1
+song.file_type = 'mp3'
+song.song_title 'I hate my boyfriend'
+song.save()
+
+# But because we know that the Album is a foreignkey to the Songs class
+we can type album1.song_set.all()
+
+
+album1.song_set.create(song_title='I love bacon', file_type='mp3')
+
+
+song = album1.song_set.create(song_title='I love bacon', file_type='mp3')
+song.song_title
+
+album1.song_set.count()

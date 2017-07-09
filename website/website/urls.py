@@ -15,6 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -23,4 +26,6 @@ urlpatterns = [
     # when a user makes a request matching the 'music' pattern it will 
     # check the urlpatterns found inside the music.urls file
     url(r'^music/', include('music.urls')),
-]
+] 
+
+# + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

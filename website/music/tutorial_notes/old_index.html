@@ -1,0 +1,35 @@
+{% if all_albums %}
+	<ul>
+		<h3> Here are all my albums </h3>
+		{% for album in all_albums %}
+		
+		<li><a href="/music/{{album.id}}"> {{album.album_title}}</a></li>
+
+		{% endfor %}
+</ul>
+
+{% else %}
+	<h3> You don't have any albums </h3>
+{% endif %}
+
+
+
+	<!--
+	Note 1 :
+		This is what your designer would typically send
+		
+		<li><a href="#r"> Album Title Here</a></li>
+
+		And this is how you display what data is passed from
+		what gets loaded into the template (see the views.py)
+
+		jinja template, e.g. django code 
+		e.g. looks at the 'context' variable passed into the template 
+		to loop against
+
+	Note 2: 
+		Notice how href="/music" is hard coded, this is bad and doesn't scale well
+		E.g. might have to change a bunch of references to this etc.
+
+		So we fix this by making it dynmaic as well
+	-->

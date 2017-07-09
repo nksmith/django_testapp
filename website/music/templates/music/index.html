@@ -1,9 +1,47 @@
+<!-- Loads the path to your static files --> 
+<!-- loads the path not the files-->
+{% load staticfiles %} 
+
+<!-- load individual images, the {% static...}, refers to the static directory -->
+<!-- style.css has the path to the images in the images folder-->
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" type="text/css" href="{% static 'music/style.css' %}"/>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="{% url 'music:index' %}">Viberr</a>
+        <!-- <img alt="Brand" src="..."> -->
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- body-->
 {% if all_albums %}
 	<ul>
 		<h3> Here are all my albums </h3>
 		{% for album in all_albums %}
 		
-		<li><a href="/music/{{album.id}}"> {{album.album_title}}</a></li>
+		<!-- 
+		'url' let's django know your using the special url
+		'detail is referenced from the urls.py name='detail' 
+	
+		'music:detail' , music refers to app_name in the urls.py for this app
+		-->
+
+
+		<li><a href="{% url 'music:detail' album.id %}"> {{album.album_title}}</a></li>
 
 		{% endfor %}
 </ul>
@@ -13,16 +51,3 @@
 {% endif %}
 
 
-
-	<!--
-		This is what your designer would typically send
-		
-		<li><a href="#r"> Album Title Here</a></li>
-
-		And this is how you display what data is passed from
-		what gets loaded into the template (see the views.py)
-
-		jinja template, e.g. django code 
-		e.g. looks at the 'context' variable passed into the template 
-		to loop against
-	-->
