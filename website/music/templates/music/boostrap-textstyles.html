@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<script src="http://code.jquery.com/jquery.js"></script>
- 	
+ 	<script src="bootstrap/js/bootstrap.js"></script>
 	<!-- USING BOOTSTRAP -->
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -18,34 +18,62 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>    
 	<!-- Google Fonts API -->
 	<link href='https://fonts.googleapis.com/css?family=Satisfy' rel=='stylesheet' type='text/css'>
-
-	{% load staticfiles %}
-	<link rel="stylesheet" type="text/css" href="{% static 'music/sidebar.css' %}"/>
-
 </head>
+
 
 <body>
 
 	<div class="container-fluid">
-        <h3>Phone entire width, desktops 1/2 width</h3>
-        <div class="row">
-            <div class="col-xs-12 col-md-6" style="background: lightblue;">Phone entire width, desktops 1/2 width</div>
-            <div class="col-xs-12 col-md-6" style="background: lightcoral;">Phone entire width, desktops 1/2 width</div>
-            <div class="col-xs-12 col-md-6" style="background: lightgreen;">Phone entire width, desktops 1/2 width</div>
-        </div>
 
-        <h3>Phone 1/2 width, desktops 1/3 width</h3>
-        <div class="row">
-            <div class="col-xs-6 col-md-4" style="background: lightblue;">Phone 1/2 width, desktops 1/3 width</div>
-            <div class="col-xs-6 col-md-4" style="background: lightcoral;">Phone 1/2 width, desktops 1/3 width</div>
-            <div class="col-xs-6 col-md-4" style="background: lightgreen;">Phone 1/2 width, desktops 1/3 width</div>
-        </div>
+		<h1>3 column layout</h1>
+		<div class="row">
+			<div class="col-md-4" style="background-color: #FF9999">Left</div>
+			<div class="col-md-4" style="background-color: #99CCFF">Middle</div>
+			<div class="col-md-4" style="background-color: #00CC99">Right</div>
+		</div>
 
-        <
+		<p>You can highlight words <mark>text using the mark tag</mark> </p>
+
+		<blockquote>
+			<p>Interesting blockquote from...</p>
+			<footer>My Grandpa</footer>
+		</blockquote>	
 
 
-    </div>
+		<h4>Things to do when you're bored</h4>
+		<dl>
+			<dt>Indoors</dt>
+				<dd>- take a nap</dd>
+				<dd>- watch netflix for 8 hours</dd>
+				<dd>- drink wine</dd>
+			<dt>Outdoors</dt>
+				<dd>- go back inside</dd>
+		</dl>
 
+
+		<p>To set the users weight use <code>setUserWight(374);</code> with an integer</p>
+
+		<p>For multi line code use the pre tags</p>	
+		<pre>
+for n in range(101):
+	if(n % 4 is 0):
+		print(n)
+		</pre>
+
+
+		<p>This is supposed to be keyboard input <kbd>Ctrl+Alt+Del</kbd></p>
+
+
+		<h4>Build in color classes</h4>
+		<p class="text-muted">Text muted </p>
+		<p class="text-success">Congrats you filled out that form correctly</p>
+		<p class="text-danger">Danger Zone!!!</p>
+
+
+		<p class="bg-success">Congrats you filled out that form correctly</p>
+		<p class="bg-danger">Danger Zone!!!</p>
+
+	</div>
 
 </body>
 </html>
