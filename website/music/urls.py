@@ -8,28 +8,41 @@ from . import views
 
 app_name = 'music'
 
+# Using classes
 urlpatterns = [
 
-	# /music/
-    url(r'^$', views.index, name='index'),
-    # r' means regular expression, '^' = begin, '$' = end 
-	# so when the user requests /music/ and nothing else, this should return
-	# what is defined in the view file, for the function named index (hence views.index) as the second param
-
+    # /music/
+    url(r'^$', views.IndexView.as_view(), name='index'),
     # /music/<album_id>/
-    url(r'^(?P<album_id>[0-9]+)/$', views.detail, name='detail'),
-    # Next we want to return a page that is based on the album_id
-    # Regex explained
-    # (?P < variable_name> [0-9]+)
-    # This says when a user requests for example /music/123 
-    # store 123 into the variable called variable_name
-    # the variable_name should be from the numbers [0-9] and any integer that follows '+'
-    # "name= " references the url 
+    url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),
+]
 
-    # /music/<album_id>/favorite
-    url(r'^(?P<album_id>[0-9]+)/favorite/$', views.favorite, name='favorite'),
+
+
+# NOTES
+# Using -> view functions
+# urlpatterns = [
+
+# 	# /music/
+#     url(r'^$', views.index, name='index'),
+#     # r' means regular expression, '^' = begin, '$' = end 
+# 	# so when the user requests /music/ and nothing else, this should return
+# 	# what is defined in the view file, for the function named index (hence views.index) as the second param
+
+#     # /music/<album_id>/
+#     url(r'^(?P<album_id>[0-9]+)/$', views.detail, name='detail'),
+#     # Next we want to return a page that is based on the album_id
+#     # Regex explained
+#     # (?P < variable_name> [0-9]+)
+#     # This says when a user requests for example /music/123 
+#     # store 123 into the variable called variable_name
+#     # the variable_name should be from the numbers [0-9] and any integer that follows '+'
+#     # "name= " references the url 
+
+#     # /music/<album_id>/favorite
+#     url(r'^(?P<album_id>[0-9]+)/favorite/$', views.favorite, name='favorite'),
 
 
 
     
-]
+# ]

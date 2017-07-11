@@ -1,0 +1,27 @@
+<!-- to include a template use extends -->
+{% extends 'music/base.html' %}
+
+{% block body %}
+
+    {% if all_albums %}
+        <ul>
+            <h3> Here are all my albums </h3>
+            {% for album in all_albums %}
+            
+            <!-- 
+            'url' let's django know your using the special url
+            'detail is referenced from the urls.py name='detail' 
+        
+            'music:detail' , music refers to app_name in the urls.py for this app
+            -->
+
+            <li><a href="{% url 'music:detail' album.id %}"> {{album.album_title}}</a></li>
+
+            {% endfor %}
+    </ul>
+
+    {% else %}
+        <h3> You don't have any albums </h3>
+    {% endif %}
+
+{% endblock %}

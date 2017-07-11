@@ -1,0 +1,56 @@
+{% extends 'music/base.html' %}
+{% block title %}Album Details{% endblock %}
+
+{% block body %}
+	<img src="{{album.album_logo}}"
+
+	<h1>{{ album.album_title}}</h1>
+	<h2> {{album.artist}} </h2>
+
+
+	{% if error_message %}
+		<p><strong>{{error_message}}</strong></p>
+	{% endif %}
+
+
+	<!--action is what url you want to send this data to-->
+	<form action="{% url 'music:favorite' album.id %}" method="POST">
+		{% csrf_token %}
+
+		{% for song in album.song_set.all %}
+		<!--list through the album and make that a choice-->
+			<input type="checkbox" id="song{{ forloop.counter}}" name="song" value="{{song.id}}"/>
+			<!-- 	type=input button
+					id="for html, auto increment when song is printed"
+					name="variable name that gets passed to the view function"
+					value=song id --> 
+
+			<label for="song{{ forloop.counter}}">  
+				{{song.song_title}}
+				
+				{% if song.is_favorite %}
+					<img src="http://www.webweaver.nu/clipart/img/nature/planets/3d-yellow-star.png"/>
+				{% endif %}
+
+			</label><br>
+		{% endfor %}
+
+		<input type="submit" value="Favorite">
+		<!-- When favorite is submitted, we send the'post' request back to the 'music:favorite' url
+				along with the value of the {{song.id}} that was selected and pass that
+				to the favorite function in the views.py file-->
+	</form>
+
+
+	<!--
+		old template	
+		{{ album }} 
+
+		<ul>
+		{% for song in album.song_set.all %}
+		<li> {{song.song_title}} - {{song.file_type}}</li>
+		{% endfor %}
+		</ul>
+	-->
+
+{% endblock %}
