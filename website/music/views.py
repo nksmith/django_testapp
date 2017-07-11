@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.views import generic
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 # which model/table you want to query
 from .models import Album, Song
@@ -20,4 +21,8 @@ class IndexView(generic.ListView):
 class DetailView(generic.DetailView):
 	# what type of object are you trying to get the detail of
 	model = Album
-	template_name ='music/detail.html'		
+	template_name ='music/detail.html'
+
+class AlbumCreate(CreateView):
+	model = Album
+	fields = ['artist','album_title','genre','album_logo']		
